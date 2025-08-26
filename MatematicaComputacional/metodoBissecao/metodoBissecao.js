@@ -35,7 +35,7 @@ function bissecao(func, a, b, tol) {
     };
 }
 
-app.post("/metodo_bissecao", (req, res) => {
+bissecao.post("/metodo_bissecao", (req, res) => {
     try {
         const { expressao, tolerancia } = req.body;
         if (!expressao || tolerancia === undefined) {
@@ -70,3 +70,6 @@ app.post("/metodo_bissecao", (req, res) => {
         res.status(500).json({ erro: error.message });
     }
 });
+
+
+export { bissecao };

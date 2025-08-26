@@ -15,5 +15,5 @@ app.use('/metodo_bissecao', bissecao);
 
 const PORT = 8081;
 app.listen(PORT, () => {
-    console.log("✅ Servidor rodando na porta:", PORT);
+    console.log("Servidor rodando na porta:", PORT);
 });
