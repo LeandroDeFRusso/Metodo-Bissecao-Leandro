@@ -1,0 +1,39 @@
+<h2>Resultado - Método da Bisseção</h2>
+
+{{#if erro}}
+<div class="alert alert-danger">{{erro}}</div>
+{{else}}
+<p><b>Função:</b> {{funcao}}</p>
+<p><b>Epsilon:</b> {{parada}}</p>
+<p><b>Intervalos encontrados:</b></p>
+<ul>
+    {{#each intervalos}}
+    <li>[{{this.[0]}}, {{this.[1]}}]</li>
+    {{/each}}
+</ul>
+
+
+<p><b>Raiz aproximada:</b> {{raiz}}</p>
+
+<h3>Iterações:</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>a</th>
+            <th>b</th>
+            <th>meio</th>
+            <th>f(meio)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each iteracoes}}
+        <tr>
+            <td>{{this.a}}</td>
+            <td>{{this.b}}</td>
+            <td>{{this.buscaMeio}}</td>
+            <td>{{this.meio}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{/if}}
