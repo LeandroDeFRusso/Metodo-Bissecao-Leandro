@@ -1,0 +1,54 @@
+<h2>Resultado - Eliminação de Gauss</h2>
+
+{{#if erro}}
+<div class="alert alert-danger">{{erro}}</div>
+{{else}}
+
+<h3>Matriz original:</h3>
+<table class="table table-bordered">
+    {{#each matrizOriginal}}
+    <tr>
+        {{#each this}}
+        <td>{{this}}</td>
+        {{/each}}
+        <td>|</td>
+        <td>{{lookup ../termosOriginais @index}}</td>
+    </tr>
+    {{/each}}
+
+</table>
+
+<h3>Etapas:</h3>
+{{#each etapas}}
+<div class="mb-3">
+    <p><b>Etapa {{inc @index}}:</b></p>
+    <table class="table table-sm table-bordered">
+        {{#each this}}
+        <tr>
+            {{#each this}}
+            <td>{{this}}</td>
+            {{/each}}
+        </tr>
+        {{/each}}
+    </table>
+</div>
+{{/each}}
+
+<h3>Multiplicadores</h3>
+<p><b>Quantidade utilizada:</b> {{quantidadeMultiplicadores}}</p>
+
+<h3>Multiplicadores Encontrados:</h3>
+<ul>
+    {{#each multiplicadores}}
+    <li>m[{{linha}},{{coluna}}] = {{valor}}</li>
+    {{/each}}
+</ul>
+
+<h3>Solução:</h3>
+<ul>
+    {{#each solucao}}
+    <li>x{{@index}} = {{this}}</li>
+    {{/each}}
+</ul>
+
+{{/if}}

@@ -7,6 +7,7 @@ import { engine } from 'express-handlebars';
 import index from './routes/index.js'
 import bissecao from './routes/bissecao.js'
 import gauss from './routes/gauss.js'
+import hbs from 'hbs';
 
 const app = express();
 
@@ -28,6 +29,9 @@ app.engine('handlebars', engine({
         allowProtoMethodsByDefault: true,
     },
     helpers: {
+        inc: function (value) {
+            return parseInt(value) + 1;
+        }
     }
 }))
 

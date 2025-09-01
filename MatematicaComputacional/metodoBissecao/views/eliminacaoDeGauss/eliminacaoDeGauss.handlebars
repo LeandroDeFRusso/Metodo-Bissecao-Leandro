@@ -1,0 +1,36 @@
+<h2>Método da Eliminação de Gauss</h2>
+
+<form action="/eliminacao-de-gauss/calcularEliminacaoDeGauss" method="POST">
+    <div class="mb-3">
+        <label class="form-label">Tamanho do sistema (n deve ser menor do que 1.000):</label>
+        <input type="number" class="form-control" name="n" id="n" required min="2" max="1000">
+        <button type="button" class="btn btn-secondary mt-2" onclick="gerarMatriz()">Gerar matriz</button>
+    </div>
+
+    <div id="matrizInputs" class="mt-3"></div>
+
+    <button type="submit" class="btn btn-primary mt-3">Calcular</button>
+</form>
+
+<script>
+    function gerarMatriz() {
+        const n = document.getElementById("n").value;
+        const container = document.getElementById("matrizInputs");
+        container.innerHTML = "";
+
+        if (!n || n < 2 || n > 1000) return;
+
+        let html = "<h4>Matriz de coeficientes (A) e vetor (b)</h4>";
+
+        for (let i = 0; i < n; i++) {
+            html += "<div class='mb-2'>";
+            for (let j = 0; j < n; j++) {
+                html += `<input type="number" step="any" name="matrizF[${i}][]" class="form-control d-inline w-auto" required>`;
+            }
+            html += ` | <input type="number" step="any" name="termos[]" class="form-control d-inline w-auto" required>`;
+            html += "</div>";
+        }
+
+        container.innerHTML = html;
+    }
+</script>
