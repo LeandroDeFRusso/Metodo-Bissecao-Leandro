@@ -3,38 +3,52 @@
 {{#if erro}}
 <div class="alert alert-danger">{{erro}}</div>
 {{else}}
-<p><b>Função:</b> {{funcao}}</p>
-<p><b>Epsilon:</b> {{parada}}</p>
-<p><b>Intervalos encontrados:</b></p>
+<p><strong>Função:</strong> {{funcao}}</p>
+<p><strong>Epsilon:</strong> {{parada}}</p>
+
+<p><strong>Intervalos encontrados:</strong></p>
 <ul>
     {{#each intervalos}}
-    <li>[{{this.[0]}}, {{this.[1]}}]</li>
+    <li>[{{this}}]</li>
     {{/each}}
 </ul>
-<p><b>Número de iterações:</b> {{iteracoes.length}}</p>
 
+<p><strong>Total de intervalos:</strong> {{resultados.length}}</p>
 
-<p><b>Raiz aproximada:</b> {{raiz}}</p>
+{{#each resultados}}
+<div class="card mb-3">
+    <div class="card-header">
+        <strong>Intervalo {{@index}}:</strong> [{{this.intervalo}}]
+        &nbsp; • &nbsp; <strong>Raiz:</strong> {{this.raiz}}
+        &nbsp; • &nbsp; <strong>Iterações:</strong> {{this.iteracoes.length}}
+    </div>
 
-<h3>Iterações:</h3>
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>a</th>
-            <th>b</th>
-            <th>meio</th>
-            <th>f(meio)</th>
-        </tr>
-    </thead>
-    <tbody>
-        {{#each iteracoes}}
-        <tr>
-            <td>{{this.a}}</td>
-            <td>{{this.b}}</td>
-            <td>{{this.buscaMeio}}</td>
-            <td>{{this.meio}}</td>
-        </tr>
-        {{/each}}
-    </tbody>
-</table>
+    <div class="card-body p-0">
+        <table class="table table-sm mb-0">
+            <thead>
+                <tr>
+                    <th>a</th>
+                    <th>b</th>
+                    <th>meio</th>
+                    <th>f(a)</th>
+                    <th>f(b)</th>
+                    <th>f(meio)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.iteracoes}}
+                <tr>
+                    <td>{{this.a}}</td>
+                    <td>{{this.b}}</td>
+                    <td>{{this.buscaMeio}}</td>
+                    <td>{{this.fA}}</td>
+                    <td>{{this.fB}}</td>
+                    <td>{{#if this.fM}}{{this.fM}}{{else}}{{this.meio}}{{/if}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+{{/each}}
 {{/if}}

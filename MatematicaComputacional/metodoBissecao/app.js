@@ -1,13 +1,12 @@
-import express from 'express';
 import bodyParser from 'body-parser';
-import path from 'path';
-import methodOverrride from 'method-override';
-import { fileURLToPath } from 'url';
+import express from 'express';
 import { engine } from 'express-handlebars';
-import index from './routes/index.js'
-import bissecao from './routes/bissecao.js'
-import gauss from './routes/gauss.js'
-import hbs from 'hbs';
+import methodOverrride from 'method-override';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import bissecao from './routes/bissecao.js';
+import gauss from './routes/gauss.js';
+import index from './routes/index.js';
 
 const app = express();
 
